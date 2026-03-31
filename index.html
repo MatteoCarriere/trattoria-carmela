@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trattoria da Nonna Carmela — Torino</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@300;400;500&display=swap"
+        rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --cream: #f5f0e8;
+            --warm-white: #fdfaf4;
+            --terracotta: #c0622a;
+            --terracotta-dark: #9a4a1c;
+            --olive: #6b7c3a;
+            --brown: #3d2b1f;
+            --brown-light: #6b4c37;
+            --gold: #c9a84c;
+            --text: #2a1f15;
+            --text-muted: #7a6a5a;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: var(--warm-white);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 4rem;
+            background: rgba(253, 250, 244, 0.92);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+            transition: box-shadow 0.3s;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 2px 20px rgba(61, 43, 31, 0.1);
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--terracotta);
+            letter-spacing: 0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--brown-light);
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--terracotta);
+        }
+
+        /* ── HERO ── */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background:
+                linear-gradient(160deg, rgba(192, 98, 42, 0.08) 0%, transparent 50%),
+                linear-gradient(to bottom, var(--cream) 0%, var(--warm-white) 100%);
+            padding: 6rem 2rem 4rem;
+        }
+
+        .hero-ornament {
+            font-size: 1rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeUp 0.8s 0.2s forwards;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 6.5rem);
+            line-height: 1.05;
+            color: var(--brown);
+            margin-bottom: 0.3rem;
+            opacity: 0;
+            animation: fadeUp 0.8s 0.4s forwards;
+        }
+
+        .hero-title em {
+            color: var(--terracotta);
+            font-style: italic;
+        }
+
+        .hero-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            animation: fadeUp 0.8s 0.6s forwards;
+        }
+
+        .hero-divider {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            animation: fadeUp 0.8s 0.7s forwards;
+        }
+
+        .hero-divider::before,
+        .hero-divider::after {
+            content: '';
+            width: 80px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .hero-divider span {
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+        .hero-desc {
+            max-width: 520px;
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+            font-weight: 300;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeUp 0.8s 0.8s forwards;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            opacity: 0;
+            animation: fadeUp 0.8s 1s forwards;
+        }
+
+        .btn-primary {
+            background: var(--terracotta);
+            color: white;
+            padding: 0.9rem 2.2rem;
+            border: none;
+            font-family: 'Raleway', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: var(--terracotta-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--brown);
+            padding: 0.9rem 2.2rem;
+            border: 1.5px solid var(--brown-light);
+            font-family: 'Raleway', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--terracotta);
+            color: var(--terracotta);
+            transform: translateY(-2px);
+        }
+
+        .hero-image-strip {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 180px;
+            background:
+                linear-gradient(to top, var(--cream) 0%, transparent 100%),
+                repeating-linear-gradient(45deg,
+                    rgba(192, 98, 42, 0.03) 0px,
+                    rgba(192, 98, 42, 0.03) 1px,
+                    transparent 1px,
+                    transparent 20px);
+        }
+
+        /* ── SECTION COMMON ── */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .section-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.8rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            color: var(--brown);
+            line-height: 1.15;
+            margin-bottom: 1.2rem;
+        }
+
+        .section-title em {
+            color: var(--terracotta);
+            font-style: italic;
+        }
+
+        .section-text {
+            font-size: 0.95rem;
+            line-height: 1.85;
+            color: var(--text-muted);
+            font-weight: 300;
+            max-width: 540px;
+        }
+
+        /* ── STORIA ── */
+        #storia {
+            background: var(--cream);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        .storia-visual {
+            position: relative;
+            height: 460px;
+        }
+
+        .storia-img-main {
+            width: 80%;
+            height: 380px;
+            background:
+                linear-gradient(135deg, var(--terracotta) 0%, var(--brown) 100%);
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            color: rgba(255, 255, 255, 0.15);
+        }
+
+        .storia-img-accent {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 55%;
+            height: 200px;
+            background: var(--olive);
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid var(--warm-white);
+        }
+
+        .storia-img-accent span {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .storia-year {
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: var(--gold);
+            opacity: 0.4;
+            font-weight: 700;
+        }
+
+        .storia-content {
+            padding: 1rem 0;
+        }
+
+        .storia-quote {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.15rem;
+            color: var(--terracotta);
+            border-left: 3px solid var(--gold);
+            padding-left: 1.2rem;
+            margin: 1.8rem 0;
+            line-height: 1.6;
+        }
+
+        /* ── MENU ── */
+        #menu {
+            background: var(--warm-white);
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .menu-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .menu-header .section-text {
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            margin-bottom: 3rem;
+            border: 1.5px solid rgba(61, 43, 31, 0.15);
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .menu-tab {
+            padding: 0.7rem 2rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 500;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-family: 'Raleway', sans-serif;
+            transition: all 0.2s;
+            border-right: 1.5px solid rgba(61, 43, 31, 0.15);
+        }
+
+        .menu-tab:last-child {
+            border-right: none;
+        }
+
+        .menu-tab.active {
+            background: var(--terracotta);
+            color: white;
+        }
+
+        .menu-tab:hover:not(.active) {
+            background: var(--cream);
+            color: var(--brown);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 1.4rem 1.6rem;
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            background: var(--cream);
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .menu-item:hover {
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .menu-item-info h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            color: var(--brown);
+            margin-bottom: 0.3rem;
+        }
+
+        .menu-item-info p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            line-height: 1.5;
+            max-width: 240px;
+        }
+
+        .menu-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--terracotta);
+            font-weight: 700;
+            white-space: nowrap;
+            margin-left: 1rem;
+        }
+
+        .menu-category {
+            display: none;
+        }
+
+        .menu-category.active {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        /* ── ORARI & INFO ── */
+        #info {
+            background: var(--brown);
+            color: var(--cream);
+            text-align: center;
+        }
+
+        #info .section-title {
+            color: var(--cream);
+        }
+
+        #info .section-title em {
+            color: var(--gold);
+        }
+
+        #info .section-label {
+            color: var(--gold);
+            opacity: 0.8;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            max-width: 900px;
+            margin: 3.5rem auto 0;
+        }
+
+        .info-card {
+            padding: 2.5rem 2rem;
+            border: 1px solid rgba(201, 168, 76, 0.25);
+            background: rgba(255, 255, 255, 0.04);
+            transition: background 0.2s;
+        }
+
+        .info-card:hover {
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        .info-icon {
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .info-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--gold);
+            margin-bottom: 0.8rem;
+        }
+
+        .info-card p {
+            font-size: 0.88rem;
+            line-height: 1.7;
+            color: rgba(245, 240, 232, 0.7);
+            font-weight: 300;
+        }
+
+        /* ── CONTATTI ── */
+        #contatti {
+            background: var(--cream);
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .form-group label {
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 0.85rem 1rem;
+            border: 1.5px solid rgba(61, 43, 31, 0.15);
+            background: var(--warm-white);
+            font-family: 'Raleway', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text);
+            outline: none;
+            transition: border-color 0.2s;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--terracotta);
+        }
+
+        .form-group textarea {
+            min-height: 110px;
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            background: #25D366;
+            color: white;
+            padding: 0.9rem 1.8rem;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            margin-top: 0.5rem;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .whatsapp-btn:hover {
+            background: #1ebe57;
+            transform: translateY(-2px);
+        }
+
+        .contact-info {
+            padding-top: 0.5rem;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.8rem;
+            padding-bottom: 1.8rem;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+        }
+
+        .contact-detail:last-child {
+            border-bottom: none;
+        }
+
+        .contact-detail-icon {
+            font-size: 1.3rem;
+            margin-top: 0.1rem;
+        }
+
+        .contact-detail-text h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.95rem;
+            color: var(--brown);
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-detail-text p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* ── MAP ── */
+        .map-container {
+            width: 100%;
+            height: 320px;
+            background: linear-gradient(135deg, #d4cfc4 0%, #c9c3b5 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-placeholder {
+            text-align: center;
+            color: var(--brown-light);
+        }
+
+        .map-placeholder span {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .map-placeholder p {
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .map-grid-lines {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(107, 76, 55, 0.12) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(107, 76, 55, 0.12) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--text);
+            color: rgba(245, 240, 232, 0.5);
+            text-align: center;
+            padding: 2.5rem;
+            font-size: 0.8rem;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+        }
+
+        footer span {
+            color: var(--gold);
+        }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            #storia,
+            #contatti {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .storia-visual {
+                height: 280px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+
+            .menu-category.active {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav id="navbar">
+        <div class="nav-logo">Trattoria da Nonna Carmela</div>
+        <ul class="nav-links">
+            <li><a href="#storia">La nostra storia</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#info">Orari</a></li>
+            <li><a href="#contatti">Contatti</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero">
+        <div class="hero-ornament">✦ Dal 1978 · Torino ✦</div>
+        <h1 class="hero-title">Trattoria da<br><em>Nonna Carmela</em></h1>
+        <p class="hero-subtitle">Cucina piemontese, fatta come una volta</p>
+        <div class="hero-divider"><span>❧</span></div>
+        <p class="hero-desc">
+            Tre generazioni di passione in ogni piatto. Ingredienti freschi del mercato di Porta Palazzo,
+            ricette tramandate a voce, e il calore di una tavola dove ci si siede tra amici.
+        </p>
+        <div class="hero-cta">
+            <a href="#menu" class="btn-primary">Scopri il menu</a>
+            <a href="#contatti" class="btn-outline">Prenota un tavolo</a>
+        </div>
+        <div class="hero-image-strip"></div>
+    </section>
+
+    <!-- STORIA -->
+    <section id="storia">
+        <div class="storia-visual reveal">
+            <div class="storia-img-main">🍷</div>
+            <div class="storia-img-accent"><span>🫕</span></div>
+            <div class="storia-year">1978</div>
+        </div>
+        <div class="storia-content reveal">
+            <div class="section-label">La nostra storia</div>
+            <h2 class="section-title">Una cucina <em>di famiglia</em><br>nel cuore di Torino</h2>
+            <p class="section-text">
+                Carmela aprì la trattoria nel 1978 in Via della Consolata con un menù scritto a mano e tre tavoli.
+                Oggi, sua nipote Giulia porta avanti quella stessa filosofia: niente fronzoli, solo prodotti veri
+                e ricette che sanno di casa.
+            </p>
+            <blockquote class="storia-quote">
+                "A tavola non si invecchia" — ce lo ripeteva sempre la nonna,<br>e noi ci crediamo ancora.
+            </blockquote>
+            <p class="section-text">
+                Ogni mattina i nostri ingredienti arrivano da piccoli produttori locali del Piemonte.
+                Il Barolo è quello del cugino di Alba. La toma, quella del pastore di Cuneo.
+            </p>
+        </div>
+    </section>
+
+    <!-- MENU -->
+    <section id="menu">
+        <div class="menu-header reveal">
+            <div class="section-label">La nostra cucina</div>
+            <h2 class="section-title">Il <em>Menu</em></h2>
+            <p class="section-text">
+                Piatti della tradizione piemontese, con qualche sorpresa di stagione.
+                Il menu cambia ogni settimana seguendo il mercato.
+            </p>
+        </div>
+
+        <div class="menu-tabs reveal">
+            <button class="menu-tab active" onclick="switchTab('antipasti', this)">Antipasti</button>
+            <button class="menu-tab" onclick="switchTab('primi', this)">Primi</button>
+            <button class="menu-tab" onclick="switchTab('secondi', this)">Secondi</button>
+            <button class="menu-tab" onclick="switchTab('dolci', this)">Dolci</button>
+        </div>
+
+        <div id="antipasti" class="menu-category active reveal">
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Vitello Tonnato</h4>
+                    <p>Fettine di vitello con salsa tonnata della casa, capperi e limone</p>
+                </div>
+                <span class="menu-price">€14</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Bagna Cauda</h4>
+                    <p>Verdure fresche di stagione con salsa calda di acciughe e aglio</p>
+                </div>
+                <span class="menu-price">€12</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Insalata di Carne Cruda</h4>
+                    <p>Battuta di fassona piemontese al coltello, olio EVO, limone e sale</p>
+                </div>
+                <span class="menu-price">€16</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Tagliere Misto</h4>
+                    <p>Salumi e formaggi piemontesi, mostarda e grissini artigianali</p>
+                </div>
+                <span class="menu-price">€18</span>
+            </div>
+        </div>
+
+        <div id="primi" class="menu-category">
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Tajarin al Ragù</h4>
+                    <p>Pasta all'uovo tirata a mano con ragù di carne misto piemontese</p>
+                </div>
+                <span class="menu-price">€15</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Agnolotti del Plin</h4>
+                    <p>Pasta ripiena di arrosto e verdure, burro e salvia o al sugo d'arrosto</p>
+                </div>
+                <span class="menu-price">€16</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Risotto al Barolo</h4>
+                    <p>Riso Carnaroli mantecato con Barolo DOCG e Castelmagno DOP</p>
+                </div>
+                <span class="menu-price">€17</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Zuppa di Legumi</h4>
+                    <p>Minestra di fagioli borlotti, cavolo nero e lardo di Colonnata</p>
+                </div>
+                <span class="menu-price">€11</span>
+            </div>
+        </div>
+
+        <div id="secondi" class="menu-category">
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Brasato al Barolo</h4>
+                    <p>Manzo piemontese brasato lentamente nel vino, con polenta morbida</p>
+                </div>
+                <span class="menu-price">€24</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Fritto Misto Piemontese</h4>
+                    <p>Selezione di carni e verdure in pastella, con salsa verde della casa</p>
+                </div>
+                <span class="menu-price">€22</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Finanziera</h4>
+                    <p>Ricetta tradizionale con rigaglie di pollo, funghi e Marsala</p>
+                </div>
+                <span class="menu-price">€20</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Coniglio alla Ligure</h4>
+                    <p>Coniglio di cascina con olive taggiasche, capperi e pinoli</p>
+                </div>
+                <span class="menu-price">€19</span>
+            </div>
+        </div>
+
+        <div id="dolci" class="menu-category">
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Bunet</h4>
+                    <p>Budino al cioccolato e amaretti, ricetta della nonna Carmela</p>
+                </div>
+                <span class="menu-price">€7</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Panna Cotta</h4>
+                    <p>Con coulis di frutti di bosco freschi di stagione</p>
+                </div>
+                <span class="menu-price">€6</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Bonet al Caffè</h4>
+                    <p>Variante con crema al caffè e scaglie di cioccolato fondente</p>
+                </div>
+                <span class="menu-price">€7</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Selezione di Formaggi</h4>
+                    <p>Toma, Castelmagno, Robiola di Roccaverano con miele e noci</p>
+                </div>
+                <span class="menu-price">€12</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- INFO -->
+    <section id="info">
+        <div class="section-label reveal">Quando venire</div>
+        <h2 class="section-title reveal">Orari e <em>informazioni</em></h2>
+        <div class="info-grid">
+            <div class="info-card reveal">
+                <div class="info-icon">🕐</div>
+                <h3>Orari</h3>
+                <p>
+                    Lunedì – Venerdì<br>12:00 – 14:30 · 19:00 – 22:30<br><br>
+                    Sabato<br>19:00 – 23:00<br><br>
+                    Domenica <em style="color:rgba(245,240,232,0.4)">Chiuso</em>
+                </p>
+            </div>
+            <div class="info-card reveal">
+                <div class="info-icon">📍</div>
+                <h3>Dove siamo</h3>
+                <p>
+                    Via della Consolata, 14<br>
+                    10122 Torino (TO)<br><br>
+                    Metro: Porta Susa (5 min a piedi)<br>
+                    Parcheggio: Piazza della Repubblica
+                </p>
+            </div>
+            <div class="info-card reveal">
+                <div class="info-icon">📋</div>
+                <h3>Prenotazioni</h3>
+                <p>
+                    Consigliamo sempre la prenotazione,<br>soprattutto nel weekend.<br><br>
+                    Accettiamo gruppi fino a 20 persone<br>con menù concordato.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTATTI -->
+    <section id="contatti">
+        <div class="contact-info reveal">
+            <div class="section-label">Scrivici</div>
+            <h2 class="section-title">Prenota il<br>tuo <em>tavolo</em></h2>
+            <div class="contact-detail">
+                <div class="contact-detail-icon">📞</div>
+                <div class="contact-detail-text">
+                    <h4>Telefono</h4>
+                    <p>011 4 567 890<br>Lun–Ven, 10:00–22:00</p>
+                </div>
+            </div>
+            <div class="contact-detail">
+                <div class="contact-detail-icon">📧</div>
+                <div class="contact-detail-text">
+                    <h4>Email</h4>
+                    <p>info@trattoriacarmela.it</p>
+                </div>
+            </div>
+            <div class="contact-detail">
+                <div class="contact-detail-icon">💬</div>
+                <div class="contact-detail-text">
+                    <h4>WhatsApp</h4>
+                    <p>Preferisci messaggiare?<br>Siamo anche su WhatsApp.</p>
+                </div>
+            </div>
+            <a href="https://wa.me/39011456789?text=Ciao!%20Vorrei%20prenotare%20un%20tavolo." class="whatsapp-btn"
+                target="_blank">
+                <span>💬</span> Scrivi su WhatsApp
+            </a>
+        </div>
+
+        <div class="contact-form reveal">
+            <div class="form-group">
+                <label>Nome e Cognome</label>
+                <input type="text" placeholder="Mario Rossi" />
+            </div>
+            <div class="form-group">
+                <label>Telefono</label>
+                <input type="tel" placeholder="+39 333 000 0000" />
+            </div>
+            <div class="form-group">
+                <label>Data preferita</label>
+                <input type="date" />
+            </div>
+            <div class="form-group">
+                <label>Numero di persone</label>
+                <select>
+                    <option>1–2 persone</option>
+                    <option>3–4 persone</option>
+                    <option>5–6 persone</option>
+                    <option>Gruppo (7+)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Note (allergie, occasioni speciali...)</label>
+                <textarea placeholder="Scrivi qui eventuali richieste particolari..."></textarea>
+            </div>
+            <button class="btn-primary" style="width:100%; padding: 1rem;"
+                onclick="alert('Prenotazione inviata! Ti confermiamo entro breve. 🍷')">
+                Invia Prenotazione
+            </button>
+        </div>
+    </section>
+
+    <!-- MAP -->
+    <div class="map-container">
+        <div class="map-grid-lines"></div>
+        <div class="map-placeholder">
+            <span>🗺️</span>
+            <p>Via della Consolata, 14 — Torino</p>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2024 <span>Trattoria da Nonna Carmela</span> · Via della Consolata 14, Torino · P.IVA 01234567890</p>
+        <p style="margin-top:0.5rem; font-size:0.72rem; opacity:0.6;">Sito realizzato da Matteo Carriere ·
+            matteocarriere.dev</p>
+    </footer>
+
+    <script>
+        // Nav shadow on scroll
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+        });
+
+        // Menu tabs
+        function switchTab(category, btn) {
+            document.querySelectorAll('.menu-category').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById(category).classList.add('active');
+            btn.classList.add('active');
+        }
+
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('visible'), i * 80);
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+
+</html>
