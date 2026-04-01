@@ -9,9 +9,7 @@ Design caldo ed editoriale, con sistema di prenotazione integrato via WhatsApp B
 
 ## Screenshot
 
-![Trattoria da Nonna Carmela](screenshot.png)
-
-> Per aggiornare: trascina un'immagine direttamente nell'editor GitHub e sostituisci il percorso sopra.
+<img width="1896" height="1079" alt="image" src="https://github.com/user-attachments/assets/b4b29588-f4ea-4f17-9c07-316c88c67f3c" />
 
 ## Cosa include
 
