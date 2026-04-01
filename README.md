@@ -1,34 +1,40 @@
-# 🍷 Trattoria da Nonna Carmela — Torino
+# Trattoria da Nonna Carmela 🍷
 
-Un sito web **moderno, responsive e orientato alla conversione** per una storica trattoria piemontese nel cuore di Torino. Progettato specificamente per essere condiviso tramite **WhatsApp Business**.
+Sito web per ristorante piemontese — progetto portfolio.  
+Design caldo ed editoriale, con sistema di prenotazione integrato via WhatsApp Business.
 
-🔗 **[Visualizza il Sito Live](https://matteocarriere.github.io/trattoria-carmela/)**
+## Demo
 
----
+🔗 [matteocarriere.github.io/trattoria-carmela](https://matteocarriere.github.io/trattoria-carmela/)
 
-## 🚀 Caratteristiche principali
+## Screenshot
 
-* **Design Sabaudo & Moderno:** Palette colori ispirata al territorio (terracotta, oliva, crema) con tipografia elegante (*Playfair Display*).
-* **Mobile-First UX:** Ottimizzato per la navigazione da smartphone con elementi "Tap-to-Action".
-* **Prenotazione WhatsApp Interattiva:** Un form personalizzato in JavaScript che compone automaticamente un messaggio precompilato e apre WhatsApp per finalizzare la prenotazione.
-* **Menu Dinamico:** Sistema di tab per navigare facilmente tra Antipasti, Primi, Secondi e Dolci senza ricaricare la pagina.
-* **SEO & Social Ready:** Tag Open Graph configurati per un'anteprima professionale (immagine + descrizione) quando il link viene condiviso sui social o chat.
+![Trattoria da Nonna Carmela](screenshot.png)
 
-## 🛠️ Tecnologie utilizzate
+> Per aggiornare: trascina un'immagine direttamente nell'editor GitHub e sostituisci il percorso sopra.
 
-* **HTML5 & CSS3:** Layout custom, Flexbox, CSS Grid e animazioni "Scroll Reveal".
-* **JavaScript (ES6):** Gestione del form di prenotazione, logica delle tab e Intersection Observer API per le animazioni all'apparizione.
-* **Google Fonts:** Integrazione di font premium per un look editoriale.
-* **Fav.farm:** Utilizzo di icone dinamiche tramite emoji.
+## Cosa include
 
-## 📱 Come utilizzarlo per WhatsApp Business
+- Hero con animazioni in entrata scaglionate
+- Sezione storia con layout a due colonne asimmetrico
+- Menu dinamico con tab (Antipasti / Primi / Secondi / Dolci)
+- Form prenotazione con apertura automatica WhatsApp
+- Orari e informazioni pratiche
+- Scroll reveal su tutte le sezioni
+- Responsive mobile
 
-Il sito è stato pensato per essere il "biglietto da visita digitale" della trattoria:
-1. Il ristoratore invia il link al cliente.
-2. Il cliente consulta il menu e gli orari.
-3. Il cliente compila il form e, con un click, invia i dati direttamente sul WhatsApp del ristorante.
+## Tecnologie
 
----
+- HTML5 / CSS3 / JavaScript vanilla
+- Font: Playfair Display + Raleway (Google Fonts)
+- Zero dipendenze, zero framework
 
-### 👨‍💻 Sviluppato da
-**Matteo Carriere** [Profilo GitHub](https://github.com/MatteoCarriere) 
+## Settore target
+
+Progetto dimostrativo per il settore **Food & Ristorazione**.  
+Adattabile a: trattorie, ristoranti, pizzerie, bar, catering.
+
+## Contatti
+
+Realizzato da **Matteo Carriere**  
+🔗 [github.com/MatteoCarriere](https://github.com/MatteoCarriere)
