@@ -1260,12 +1260,12 @@
             const dataFormattata = data.split('-').reverse().join('/');
 
             // 4. Compongo il messaggio (testo semplice)
-            let messaggio = `🍝 *Nuova Prenotazione* 🍝\n\n`;
-            messaggio += `👤 *Nome:* ${nome}\n`;
-            messaggio += `📞 *Tel:* ${telCliente}\n`;
-            messaggio += `📅 *Data:* ${dataFormattata}\n`;
-            messaggio += `🕐 *Orario:* ${orario}\n`;
-            messaggio += `👥 *Persone:* ${persone}\n`;
+            let messaggio = `*Nuova Prenotazione*\n\n`;
+            messaggio += `*Nome:* ${nome}\n`;
+            messaggio += `*Tel:* ${telCliente}\n`;
+            messaggio += `*Data:* ${dataFormattata}\n`;
+            messaggio += `*Orario:* ${orario}\n`;
+            messaggio += `*Persone:* ${persone}\n`;
 
             if (note) {
                 messaggio += `📝 *Note:* ${note}\n`;
