@@ -1,11 +1,11 @@
-# Trattoria da Nonna Carmela 🍷
+# Trattoria da Nonna Carmela
 
 Sito web per ristorante piemontese — progetto portfolio.  
 Design caldo ed editoriale, con sistema di prenotazione integrato via WhatsApp Business.
 
 ## Demo
 
-🔗 [matteocarriere.github.io/trattoria-carmela](https://matteocarriere.github.io/trattoria-carmela/)
+[matteocarriere.github.io/trattoria-carmela](https://matteocarriere.github.io/trattoria-carmela/)
 
 ## Screenshot
 
@@ -35,4 +35,4 @@ Adattabile a: trattorie, ristoranti, pizzerie, bar, catering.
 ## Contatti
 
 Realizzato da **Matteo Carriere**  
-🔗 [github.com/MatteoCarriere](https://github.com/MatteoCarriere)
+[github.com/MatteoCarriere](https://github.com/MatteoCarriere)
